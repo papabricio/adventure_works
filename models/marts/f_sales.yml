@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: f_sales
+    columns:
+      - name: salesorderdetailid
+        tests:
+          - not_null
+      - name: salesorderid
+          - not null

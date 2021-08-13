@@ -1,0 +1,174 @@
+version: 2
+
+sources:
+  - name: adventure_works_elt
+    description: This is a replica of the Postgres database used by our app
+    tables:
+      - name: salesorderheader
+        description: >
+          One record per order. Includes cancelled and deleted orders.
+        columns:
+          - name: salesorderid
+            description: Primary key of the orders table
+            tests:
+              - unique
+              - not_null
+      - name: salesorderdetail
+        description: > 
+          This table contain detailed information about each order
+        columns:
+          - name: salesorderdetailid
+            description: Primary key of this table
+            tests:
+              - unique
+              - not_null
+      - name: salesorderheadersalesreason
+        description: >
+          Link table orderheader with salesreason
+        columns:
+          - name: salesorderid
+            description: Primary key of the orders table
+            tests:
+              - not_null
+          - name: salesreasonid
+            description: Primary key of the orders table
+            tests:
+              - not_null
+      - name: salesreason
+        description: > 
+          This table contain detailed information about each order
+        columns:
+          - name: salesreasonid
+            description: Primary key of this table
+            tests:
+              - unique
+              - not_null
+      - name: product
+        description: > 
+          This table contain detailed information about each product
+        columns:
+          - name: productid
+            description: Primary key of this table
+            tests:
+              - unique
+              - not_null
+      - name: salesperson
+        description: > 
+          This table the main data of the salesperson of a order
+        columns:
+          - name: businessentityid
+            description: Primary key of this table
+            tests:
+              - unique
+              - not_null
+      - name: store
+        description: > 
+          This table contain information about the company stores
+        columns:
+          - name: businessentityid
+            description: Primary key of this table
+            tests:
+              - not_null
+      - name: address
+        description: > 
+          This table contain detailed information about the address of each entity
+        columns:
+          - name: addressid
+            description: Primary key of this table
+            tests:
+              - unique
+              - not_null  
+      - name: stateprovince
+        description: > 
+          This table contain detailed information about each province
+        columns:
+          - name: stateprovinceid
+            description: Primary key of this table
+            tests:
+              - unique
+              - not_null        
+      - name: countryregion
+        description: > 
+          This table contain detailed information about each country
+        columns:
+          - name: countryregioncode
+            description: Primary key of this table
+            tests:
+              - unique
+              - not_null        
+      - name: businessentity
+        description: > 
+          This table contain detailed information about each order
+        columns:
+          - name: businessentityid
+            description: Primary key of this table
+            tests:
+              - unique
+              - not_null
+      - name: businessentityaddress
+        description: > 
+          This table contain detailed information about each order
+        columns:
+          - name: salesorderdetailsid
+            description: Primary key of this table
+      - name: creditcard
+        description: > 
+          This table contain summary information about credit cardas used in each order
+        columns:
+          - name: creditcardid
+            description: Primary key of this table
+            tests:
+              - unique
+              - not_null     
+      - name: personcreditcard
+        description: > 
+          Relat table person with creditcard
+        columns:
+          - name: businessentityid
+            description: Primary key of this table
+            tests:
+              - not_null        
+      - name: person
+        description: > 
+          Contais personal information abount each person: employee, customers, vendors
+        columns:
+          - name: businessentityid
+            description: Primary key of this table
+            tests:
+              - unique
+              - not_null
+      - name: customer
+        description: > 
+          This table contain detailed information about each customer
+        columns:
+          - name: customerid
+            description: Primary key of this table
+            tests:
+              - unique
+              - not_null
+      - name: specialoffer
+        description: > 
+          This table contain detailed information about the offers in our products
+        columns:
+          - name: specialofferid
+            description: Primary key of this table
+            tests:
+              - unique
+              - not_null        
+      - name: specialofferproduct
+        description: > 
+          This table contain detailed the product that are or was in offer
+        columns:
+          - name: specialofferid
+            description: Primary key of this table
+            tests:
+              - not_null
+      - name: productproductphoto
+        description: > 
+          This table contain detailed the product that are or was in offer
+        columns:
+          - name: productid
+            description: Primary key of this table
+            tests:
+              - unique
+              - not_null        
